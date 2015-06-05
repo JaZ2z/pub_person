@@ -50,7 +50,7 @@ describe "StaticPages" do
     	end
     end
 
-    describe "Credits Page" do
+    describe "Contacts Page" do
     	it "Should have the content 'Контактна інформація'" do
     		visit '/static_pages/contacts'
     		expect(page).to have_content('Контактна інформація')
@@ -58,7 +58,7 @@ describe "StaticPages" do
 
     	it "Should have the right title" do
     		visit '/static_pages/contacts'
-    		expect(page).to have_content('Публічні Діячі України | Контакти')
+    		expect(page).to have_title('Публічні Діячі України | Контакти')
     	end
     end
 end
