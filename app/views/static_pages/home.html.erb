@@ -1,2 +1,16 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% provide(:title, 'Домівка') %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Публічні Діячі України | <%= yield(:title) %></title>
+</head>
+
+<body>
+	<h1>Публічні діячі</h1>
+	<p>Сайт пошуку українських публічних діячів. 
+       <a href="http://public.biz.ua">Стара версія</a>
+	</p>
+</body>
+
+</html>
