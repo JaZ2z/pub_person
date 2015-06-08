@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
+	let(:base_title) { "Публічні Діячі України" }
+
     describe "Home Page" do
         it "should have the content 'Публічні діячі'" do
             visit '/static_pages/home'
@@ -10,7 +12,7 @@ describe "StaticPages" do
 
         it "should have the right title" do
         	visit '/static_pages/home'
-        	expect(page).to have_title('Публічні Діячі України | Домівка')
+        	expect(page).to have_title("#{base_title} | Домівка")
         end
     end
 
@@ -22,7 +24,7 @@ describe "StaticPages" do
 
     	it "should have the right title" do
         	visit '/static_pages/help'
-        	expect(page).to have_title('Публічні Діячі України | Допомога')
+        	expect(page).to have_title("#{base_title} | Допомога")
         end
     end
 
@@ -34,7 +36,7 @@ describe "StaticPages" do
 
     	it "should have the right title" do
         	visit '/static_pages/about'
-        	expect(page).to have_title('Публічні Діячі України | Про Нас')
+        	expect(page).to have_title("#{base_title} | Про Нас")
         end
     end
 
@@ -46,7 +48,7 @@ describe "StaticPages" do
 
     	it "Should have the right title" do
     		visit '/static_pages/info'
-    		expect(page).to have_title('Публічні Діячі України | Інформація')
+    		expect(page).to have_title("#{base_title} | Інформація")
     	end
     end
 
@@ -58,7 +60,7 @@ describe "StaticPages" do
 
     	it "Should have the right title" do
     		visit '/static_pages/contacts'
-    		expect(page).to have_title('Публічні Діячі України | Контакти')
+    		expect(page).to have_title("#{base_title} | Контакти")
     	end
     end
 end

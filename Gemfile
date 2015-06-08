@@ -8,9 +8,10 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+#gem 'pg', '0.15.1' # uncomment if uses postgresq
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3' # uncomment if uses sqlite3
   gem 'rspec-rails', '2.13.1'
   # The following optional lines are part of the advanced setup.
   # gem 'guard-rspec', '2.5.0'
@@ -59,7 +60,7 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
+  gem 'pg', '0.15.1' # uncomment if uses sqlite3
   gem 'rails_12factor', '0.0.2'
 end
 
