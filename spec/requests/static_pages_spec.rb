@@ -1,66 +1,62 @@
 require 'spec_helper'
 
 describe "StaticPages" do
-
-	let(:base_title) { "Публічні Діячі України" }
-
+    subject { page }
+	
     describe "Home Page" do
-        it "should have the content 'Публічні діячі'" do
-            visit '/static_pages/home'
-            expect(page).to have_content('Публічні діячі')
-        end
+        before { visit root_path }
 
-        it "should have the right title" do
-        	visit '/static_pages/home'
-        	expect(page).to have_title("#{base_title} | Домівка")
-        end
+        it { should have_content('Публічні діячі') }
+        it { should have_title(full_title('')) }
+        it { should_not have_title('| Домівка') }
     end
 
     describe "Help Page" do
-    	it "should have the content 'Допомога'" do
-    		visit '/static_pages/help'
-    		expect(page).to have_content('Допомога')
-    	end
+        before { visit help_path }    
 
-    	it "should have the right title" do
-        	visit '/static_pages/help'
-        	expect(page).to have_title("#{base_title} | Допомога")
-        end
+    	it { should have_content('Допомога') }
+        it { should have_title(full_title('Допомога')) }
     end
 
     describe "About Page" do
-    	it "Should have the content 'Про нас'" do
-    		visit '/static_pages/about'
-    		expect(page).to have_content('Про нас')
-    	end
+        before { visit about_path }
 
-    	it "should have the right title" do
-        	visit '/static_pages/about'
-        	expect(page).to have_title("#{base_title} | Про Нас")
-        end
+    	it { should have_content('Про нас') }
+        it { should have_title(full_title('Про Нас')) }
     end
 
     describe "Info Page" do
-    	it "Should have the content 'Інформація'" do
-    		visit '/static_pages/info'
-    		expect(page).to have_content('Інформація')
-    	end
+        before { visit info_path }
 
-    	it "Should have the right title" do
-    		visit '/static_pages/info'
-    		expect(page).to have_title("#{base_title} | Інформація")
-    	end
+    	it { should have_content('Інформація') }
+        it { should have_title(full_title('Інформація')) }
     end
 
     describe "Contacts Page" do
-    	it "Should have the content 'Контактна інформація'" do
-    		visit '/static_pages/contacts'
-    		expect(page).to have_content('Контактна інформація')
-    	end
+        before { visit contacts_path }
 
-    	it "Should have the right title" do
-    		visit '/static_pages/contacts'
-    		expect(page).to have_title("#{base_title} | Контакти")
-    	end
+        it { should have_content('Контактна інформація') }
+        it { should have_title(full_title('Контакти')) }
     end
+
+    it "should have the right links on the layout" do
+        visit root_path
+        click_link "Про Нас"
+        expect(page).to have_title(full_title('Про Нас'))
+        click_link "Допомога"
+        expect(page).to have_title(full_title('Допомога'))
+        click_link "Інформація"
+        expect(page).to have_title(full_title('Інформація'))
+        click_link "Контакти"
+        expect(page).to have_title(full_title('Контакти'))
+        click_link "Домівка"
+        click_link "Зареєструйся зараз!"
+        expect(page).to have_title(full_title('Реєстрація'))
+        click_link "публічні діячі"
+        expect(page).to have_title(full_title(''))
+        expect(page).not_to have_title('| Домівка')
+    end
+
 end
+
+
